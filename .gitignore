@@ -1,3 +1,4 @@
 *.zip
 .*checkpoints/
-.virtual_documents/
+*.virtual_documents/
+data/
