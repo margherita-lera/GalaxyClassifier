@@ -56,3 +56,9 @@ Da capire se le label vanno bene così, la NN le comprende?? we'll see. Margheri
 ### Gab Gigi Gio
 
 Abbiamo crosscheckato alcune cose fatte ieri, cambiato la loss function, provato a trainare, abbiamo visto che sulle GPU il tempo è 17 volte minore per il training. Abbiamo provato a usare l' eval() del modello. Ora la domanda che abbiamo è come rendere human-readable la MSELoss.
+
+##12/05/2025
+### Tutti
+Abbiamo parlato di croppare le immagini (non necessario se è veloce, da vedere) Basta inserirlo nella trasformazione iniziale selezionando i pixel che ci interessano.
+Abbiamo parlato di non usare i tre canali rgb ma usare le immagini in bianco e nero. Questo è da vedere se mantiene la stessa performance e confrontarla con quella a tre canali. 
+Stiamo facendo una regressione: da capire come stabilire se le nostre performances sono buone, anche se usare il MSE come loss va bene. (meglio RMSE)
