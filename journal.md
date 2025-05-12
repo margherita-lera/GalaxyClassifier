@@ -13,6 +13,52 @@ To do:
 ## 7/05/2025
 ### Gigi
 Allora oggi ho continuato a provare a fare un etichettatore. Gabri ne sta provando a fare uno lui anche mi ha detto.
-Allora la prima cosa che ho provato a fare è stata implementare il secondo punto suggerito ieri, ovvero scegliere il maggiore di una certa soglia. Ma poi l'ho scartato perchè non avevo voglia di implementarlo, e l'opzione in cui non c'era un chiaro maggiore non sapevo come implementarla. Avrei potuto bloccare la classe allo step precendente, per cui se ero tipo SA ed ero incerto su SAb e SAc, la chiamavo SA e sti cazzi, ma non mi piace. Per cui questo punto rimane aperto.
+Allora la prima cosa che ho provato a fare è stata implementare il secondo punto suggerito ieri, ovvero scegliere il maggiore di una certa soglia. Ma poi l'ho scartato perchè non avevo voglia di implementarlo, e l'opzione in cui non c'era un chiaro maggiore non sapevo come implementarla. Avrei potuto bloccare la classe allo step precendente, per cui se ero tipo SA ed ero incerto su SAb e SAc, la chiamavo SA, ma non mi piace. Per cui questo punto rimane aperto.
 Di contro mi sono occupato di riavvicinare la classificazione a quella di Hubble e De vaucouleurs, e direi che ci sono riuscito. Per la risposta iniziale 'smooth' sfociamo nelle E e ho scelto E0, E3 e E6. Per la risposta 'feature of disk' ho deciso che poteva essere S0, lenticolari, oppure SA/B, spirali/spirali barrate. Ho eliminato anche alcune domande, tipo quelle sul numero di bracci o sulle irregolarità, un poco per semplicità, un poco perchè anche sti cazzi, al massimo possiamo aumentare le classi in seconda sede. 
 Alla fine ho ottenuto 17 classi.
+
+## 8/05/2025
+### Gigi
+
+Con Gabri abbiamo un po' provato a capire cosa fare con le domande che hanno lo stesso numero di voti per le possibili risposte, e.g. [0.33,0.33,0.33]. Abbiamo analizzato il csv per le tre classi più scomode, che sono la Classe 9 (rounded bulge, boxy bulge, no bulge), la classe 3 (bar/no bar) e la classe 4 (spiral/not spiral). Abbiamo implementato una formulina che si chiama percentuale di somiglianza: $ 1 - ((max-min)/max)$ e abbiamo visto che le risposte difficili come (rounded/boxy) hanno un 1e5 oggetti che hanno un grado di somiglianza maggiore uguale a 0.75. Secondo noi sono troppi oggetti da scartare per cui vorremmo trovare un modo diverso di gestire la cosa. 
+Noi vorremmo tenerli, per cui stiamo esplorando delle alternative.
+
+Per la classe 9, siccome l'indecisione è tra rounded bulge e boxy bulge, suggeriamo di fare una categoria che sia Bulge / no bulge che si traduce in lenticolari o no.
+
+## 9/05/2025
+### Gab e Gio
+
+Abbiamo deciso di usare i dati senza preprocessarli. Usiamo la CNN come regressore, quindi usando le 37 colonne come labels. Quindi classificazione multi-labels (questa descrizione non è accurata). 
+
+Reading data: abbiamo creato una classe python per leggere i dati (immagini e labels e nome). Abbiamo portato le immagini in tensori 3x426x426 e normalizzate a 1 (forse andranno ridimensionate/croppate/rinormalizzate).
+
+Dataloader: 
+
+## 10/05/2025
+### Gigi e Marghe
+
+Allora per quanto riguarda il dataloader, mi sembra di aver capito che basta wrappare `training` e `test`, ottenuti splittando randomicamente `DS`, con la funzione DataLoader di `pytorch`.
+
+Oggi abbiamo abbozzato uno scheletro della CNN. Abbiamo seguito un video che la faceva con pytorch a questo ![https://www.youtube.com/watch?v=CtzfbUwrYGI]{link}.
+
+Abbiamo quindi fatto una classe che racchude la struttura della CNN, abbiamo segnato quali sono i valori che non sono vincolati tra i vari layer nei commenti.
+
+Abbiamo messo una loss fucntion e un optimizer ma che sono placeholder, si possono cambiare con quelle che riteniamo più efficaci.
+
+Dopodichè abbiamo fatto un ciclo per le epoche.
+
+Bisogna wrappare il test set.
+
+Da capire se le label vanno bene così, la NN le comprende??. Magari può servire ricostruire la probabilità di ogni ramo dell'albero, in modo da avere classi con delle probabilità indipendenti.
+
+
+## 11/05/2025
+### Gab Gigi Gio
+
+Abbiamo crosscheckato alcune cose fatte ieri, cambiato la loss function, provato a trainare, abbiamo visto che sulle GPU il tempo è 17 volte minore per il training. Abbiamo provato a usare l' eval() del modello. Ora la domanda che abbiamo è come rendere human-readable la MSELoss.
+
+##12/05/2025
+### Tutti
+Abbiamo parlato di croppare le immagini (non necessario se è veloce, da vedere). Basta inserirlo nella trasformazione iniziale selezionando i pixel che ci interessano.
+Abbiamo parlato di non usare i tre canali rgb ma usare le immagini in bianco e nero. Questo è da vedere se mantiene la stessa performance e confrontarla con quella a tre canali. 
+Stiamo facendo una regressione: da capire come stabilire se le nostre performances sono buone, anche se usare il MSE come loss va bene. (meglio RMSE)
