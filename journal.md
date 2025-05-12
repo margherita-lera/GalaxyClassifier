@@ -62,3 +62,5 @@ Abbiamo crosscheckato alcune cose fatte ieri, cambiato la loss function, provato
 Abbiamo parlato di croppare le immagini (non necessario se è veloce, da vedere). Basta inserirlo nella trasformazione iniziale selezionando i pixel che ci interessano.
 Abbiamo parlato di non usare i tre canali rgb ma usare le immagini in bianco e nero. Questo è da vedere se mantiene la stessa performance e confrontarla con quella a tre canali. 
 Stiamo facendo una regressione: da capire come stabilire se le nostre performances sono buone, anche se usare il MSE come loss va bene. (meglio RMSE)
+### Marghe
+Inserito il crop e la possibilità di mettere in bianco e nero le immagini nel training. Automatizzato la scelta di parametri nella CNN, ora basta cambiare all'inizio le variabili locali.
