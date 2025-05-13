@@ -64,3 +64,4 @@ Abbiamo parlato di non usare i tre canali rgb ma usare le immagini in bianco e n
 Stiamo facendo una regressione: da capire come stabilire se le nostre performances sono buone, anche se usare il MSE come loss va bene. (meglio RMSE)
 ### Marghe
 Inserito il crop e la possibilità di mettere in bianco e nero le immagini nel training. Automatizzato la scelta di parametri nella CNN, ora basta cambiare all'inizio le variabili locali.
+Ho anche pulito il main di git. Se vi serve NaturalClassifier o altro scrivetemeli che li ho in locale e ve li mando.
