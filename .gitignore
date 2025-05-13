@@ -1,9 +1,5 @@
 *.zip
 .*checkpoints/
-<<<<<<< HEAD
 *.virtual_documents/
-=======
-.virtual_documents/
-galaxy-zoo-the-galaxy-challenge
->>>>>>> main
 data/
+gnet/
