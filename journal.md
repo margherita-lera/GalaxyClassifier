@@ -70,3 +70,12 @@ Inserito il crop e la possibilità di mettere in bianco e nero le immagini nel t
 Ho anche pulito il main di git. Se vi serve NaturalClassifier o altro scrivetemeli che li ho in locale e ve li mando.
 
 ## 13/05/2025
+
+### Gab Gigi Gio
+
+Gio ha rotto il suo pc.
+
+Il dottorando ci ha consigliato un analogo di `keras tuner` per pytorch che si chiama optuna. Ci ha dato un occhio Gab nella lezione di oggi.
+Pensiamo che potrebbe essere la scelta migliore per tunare gli iperparametri.
+
+Gigi dovrebbe aver sistemato la parte di salvataggio e ri-caricamento dei modelli e dei vari parametri.
