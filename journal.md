@@ -79,3 +79,17 @@ Il dottorando ci ha consigliato un analogo di `keras tuner` per pytorch che si c
 Pensiamo che potrebbe essere la scelta migliore per tunare gli iperparametri.
 
 Gigi dovrebbe aver sistemato la parte di salvataggio e ri-caricamento dei modelli e dei vari parametri.
+
+## 14/05/2025
+
+### Gigi
+
+Stavo guardando la transforms.compose. Ho aggiunto random Horizontal/vertical flip. E anche ho pensato che se vogliamo fare sudare un po la CNN possiamo aggiungere un randomCrop prima del più consistente CenterCrop in modo da decentrare un poco le immagini.
+
+Ho rifatto il ciclo di training e evaluation mettendolo in due funzioni, solo perchè è + bello e ordinato in realtà. Ora sto modificando la classe `GalaxyNet` in modo tale da salvare tutte le metriche possibili. Per ora sto salvando:
+ - `mini-batch loss`
+ - `epoch mean loss`
+ - `validation batch loss`
+ - `validation epoch mean loss`
+
+Poi pensavo di salvare cose tipo numero epoche/batch sizes e tutte ste cose qui.  Ho aggiunto al salvataggio del modello tutti i parametri che mi sono venuti in mente. 
