@@ -93,3 +93,10 @@ Ho rifatto il ciclo di training e evaluation mettendolo in due funzioni, solo pe
  - `validation epoch mean loss`
 
 Poi pensavo di salvare cose tipo numero epoche/batch sizes e tutte ste cose qui.  Ho aggiunto al salvataggio del modello tutti i parametri che mi sono venuti in mente. 
+
+## 16/05/2025
+
+### Gigi e Gab
+
+Ieri Gab è riuscito a far funzionare uno study di optuna. Poi con Gigi hanno deciso di rifare tutto il setup di optuna da capo, per comprendere passaggio dopo passaggio cosa stesse succedendo. Hanno creato una classe per la CNN e impostato uno scheletro che poi la CNN potrà tunare in molti aspetti. Su suggerimento di giovanni si sono informati sulla BatchNorm e sembra che possa evitare di usare dropout e possa permettere di velocizzare il processo di apprendimento della NN in quanto permette Lr + alti. Si sono informati sulla inizializzazione di bias e pesi. Con batch norm sembra che l'inizializzazione del bias non serva in quanto non viene usato per l'aggiornamento dei pesi. Per l'inizializzazione dei pesi invece hanno scelto l'inizializzazione di He o di Kaiming che sembra essere fatta apposta per le attivazioni Relu e Leaky Relu.
+Manca da fare il forward, e altre cose.
