@@ -100,3 +100,8 @@ Poi pensavo di salvare cose tipo numero epoche/batch sizes e tutte ste cose qui.
 
 Ieri Gab è riuscito a far funzionare uno study di optuna. Poi con Gigi hanno deciso di rifare tutto il setup di optuna da capo, per comprendere passaggio dopo passaggio cosa stesse succedendo. Hanno creato una classe per la CNN e impostato uno scheletro che poi la CNN potrà tunare in molti aspetti. Su suggerimento di giovanni si sono informati sulla BatchNorm e sembra che possa evitare di usare dropout e possa permettere di velocizzare il processo di apprendimento della NN in quanto permette Lr + alti. Si sono informati sulla inizializzazione di bias e pesi. Con batch norm sembra che l'inizializzazione del bias non serva in quanto non viene usato per l'aggiornamento dei pesi. Per l'inizializzazione dei pesi invece hanno scelto l'inizializzazione di He o di Kaiming che sembra essere fatta apposta per le attivazioni Relu e Leaky Relu.
 Manca da fare il forward, e altre cose.
+
+### Marghe, Gigi
+
+Marghe e gigi alla fine hanno troubleshootato la struttura della CNN, e hanno implementato una funzione per il train. L'ultimo layer è attivato da una sigmoide invece che da `F.linear`, perchè quest'ultima voleva dei pesi in argomento.
+Gab invece ha definito una funzione `objective` che ha mandato nel gruppo.
