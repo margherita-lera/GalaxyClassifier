@@ -109,3 +109,7 @@ Ho anche scoperto che a livello di performance è molto meglio lavorare direttam
 
 Resta da capire se è compatibile con la nostra neural network, in particolare le label finali ovviamente dovranno cambiare nomi e ci dobbiamo mettere l'argmax per avere una risposta finale.
 Secondo me sarebbe interessante fare qualche distribuzione di probabilità, magari divisa in macrocategorie sommando tutte le ellittiche e spirali per farci un'idea pratica di come è fatta questa popolazione.
+### Marghe, Gigi
+
+Marghe e gigi alla fine hanno troubleshootato la struttura della CNN, e hanno implementato una funzione per il train. L'ultimo layer è attivato da una sigmoide invece che da `F.linear`, perchè quest'ultima voleva dei pesi in argomento.
+Gab invece ha definito una funzione `objective` che ha mandato nel gruppo.
