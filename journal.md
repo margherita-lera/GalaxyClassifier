@@ -118,4 +118,11 @@ Gab invece ha definito una funzione `objective` che ha mandato nel gruppo.
 
 ### Gio
 
+In gio branch.
+
 Fixed rgb handling inside the NN class.
+Minor * aesthetic * changes in the convolutional cycle. 
+Put batchnorm before pooling. It might go before ReLU even, but it is probably something to test out. Got rid of sigmoid until we mappily use mappy.
+Fixed the evaluation error(?). It used to compute the mean by the last RMSE value, now it uses the running one.
+Put nn.ReLU() instead of F.relu inside initialization of NN.
+Forgot I could write in Italian in here.
