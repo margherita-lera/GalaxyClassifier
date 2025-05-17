@@ -119,3 +119,6 @@ Gab invece ha definito una funzione `objective` che ha mandato nel gruppo.
 ### Gigi
 
 Gigi ha unito e sistemato quello che ha fatto Gabri ieri, con quello fatto da Marghe e Gigi ieri. Ha aggiunto una funzione `validationxepoca`
+### Gio
+
+Fixed rgb handling inside the NN class.
