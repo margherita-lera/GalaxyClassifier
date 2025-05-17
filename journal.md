@@ -113,3 +113,9 @@ Secondo me sarebbe interessante fare qualche distribuzione di probabilità, maga
 
 Marghe e gigi alla fine hanno troubleshootato la struttura della CNN, e hanno implementato una funzione per il train. L'ultimo layer è attivato da una sigmoide invece che da `F.linear`, perchè quest'ultima voleva dei pesi in argomento.
 Gab invece ha definito una funzione `objective` che ha mandato nel gruppo.
+
+## 17/05/2025
+
+### Gigi
+
+Gigi ha unito e sistemato quello che ha fatto Gabri ieri, con quello fatto da Marghe e Gigi ieri. Ha aggiunto una funzione `validationxepoca`
