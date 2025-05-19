@@ -155,3 +155,10 @@ Put batchnorm before pooling. It might go before ReLU even, but it is probably s
 Fixed the evaluation error(?). It used to compute the mean by the last RMSE value, now it uses the running one.
 Put nn.ReLU() instead of F.relu inside initialization of NN.
 Forgot I could write in Italian in here.
+## 19/05/2025
+
+### Gio
+
+Sistemato optuna. Da considerare quando si runna: batch size, epoche, trials.
+
+Forse si può ottimizzare meglio per ridurre il tempo di run. Togliere log the loss per ogni singola batch loss?
