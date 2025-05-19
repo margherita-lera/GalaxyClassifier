@@ -148,6 +148,6 @@ Gigi ha unito e sistemato quello che ha fatto Gabri ieri, con quello fatto da Ma
 
 ### Gio
 
-Sistemato optuna, da considerare quando si runna: batch size, epoche, trials.
+Sistemato optuna. Da considerare quando si runna: batch size, epoche, trials.
 
 Forse si può ottimizzare meglio per ridurre il tempo di run. Togliere log the loss per ogni singola batch loss?
