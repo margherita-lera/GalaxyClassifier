@@ -6,3 +6,4 @@ gnet/
 NN.ipynb
 mapper.ipynb
 mappy.py
+__pycache__/
