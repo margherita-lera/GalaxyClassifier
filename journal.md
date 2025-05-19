@@ -143,3 +143,11 @@ In gigi branch.
 
 Gigi ha unito e sistemato quello che ha fatto Gabri ieri, con quello fatto da Marghe e Gigi ieri. Ha aggiunto una funzione `validationxepoca`
 
+
+## 19/05/2025
+
+### Gio
+
+Sistemato optuna, da considerare quando si runna: batch size, epoche, trials.
+
+Forse si può ottimizzare meglio per ridurre il tempo di run. Togliere log the loss per ogni singola batch loss?
