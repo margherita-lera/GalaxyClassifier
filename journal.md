@@ -162,3 +162,18 @@ Forgot I could write in Italian in here.
 Sistemato optuna. Da considerare quando si runna: batch size, epoche, trials.
 
 Forse si può ottimizzare meglio per ridurre il tempo di run. Togliere log the loss per ogni singola batch loss?
+
+
+## 20/05/2025
+
+### Tutti (a parte Margherita, ma è solo un personaggio secondario)
+
+Ottimizzato il tempo di run riducendo la "precisione" dei float.
+
+Sistemato esteticamente la definizione della rete e la funzione forward.
+
+Sistemato init\_weights.
+
+Bisogna decidere le architetture da comparare, non ha probabilmente senso usare CNN profonde, ma è una cosa che si può controllare. La nostra rete con 3 strati convolutivi esplode perché l'output si riduce ad ogni passaggio, ha senso usare il padding per non far ridurre l'output? Senza padding è inutile il ciclo per definire gli strati convolutivi, se lasciamo stare la questione profondità esigo che venga sterminato il ciclo e sia tutto ben definito nella classe nn.Sequential.
+
+Il professore ha suggerito di scrivere tutte le considerazioni che abbiamo fatto finora sul paper.
