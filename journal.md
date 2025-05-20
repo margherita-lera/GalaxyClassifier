@@ -166,3 +166,5 @@ Sistemato init\_weights.
 Bisogna decidere le architetture da comparare, non ha probabilmente senso usare CNN profonde, ma è una cosa che si può controllare. La nostra rete con 3 strati convolutivi esplode perché l'output si riduce ad ogni passaggio, ha senso usare il padding per non far ridurre l'output? Senza padding è inutile il ciclo per definire gli strati convolutivi, se lasciamo stare la questione profondità esigo che venga sterminato il ciclo e sia tutto ben definito nella classe nn.Sequential.
 
 Il professore ha suggerito di scrivere tutte le considerazioni che abbiamo fatto finora sul paper.
+
+Ho spostato la funzione mappy in zookeper.py
