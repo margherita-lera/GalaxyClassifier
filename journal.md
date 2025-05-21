@@ -186,3 +186,9 @@ Ho spostato la funzione mappy in zookeper.py
 ### Gigi 
 
 Ho fatto delle run sulla vm. Ma con poche epoche, ora aumento le epoche
+## 21/05/2025
+
+### Gio
+Splittato test e training set. !!!SCARICATE IL PACCHETTO ZIP SU TELEGRAM!!! 
+
+(branch gio) Aggiunto la possibilità di padding='same' in zk.convool_size(). Creato un'architettura che sicuramente rivoluzionerà il panorama delle CNN. Purtroppo la loss che restituisce è un nan, il motivo esula le mie attuali facoltà mentali.
