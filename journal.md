@@ -168,3 +168,11 @@ Bisogna decidere le architetture da comparare, non ha probabilmente senso usare 
 Il professore ha suggerito di scrivere tutte le considerazioni che abbiamo fatto finora sul paper.
 
 Ho spostato la funzione mappy in zookeper.py
+
+
+## 21/05/2025
+
+### Gio
+Splittato test e training set. !!!SCARICATE IL PACCHETTO ZIP SU TELEGRAM!!! 
+
+(branch gio) Aggiunto la possibilità di padding='same' in zk.convool_size(). Creato un'architettura che sicuramente rivoluzionerà il panorama delle CNN. Purtroppo la loss che restituisce è un nan, il motivo esula le mie attuali facoltà mentali.
