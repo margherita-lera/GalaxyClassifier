@@ -179,3 +179,10 @@ Bisogna decidere le architetture da comparare, non ha probabilmente senso usare 
 Il professore ha suggerito di scrivere tutte le considerazioni che abbiamo fatto finora sul paper.
 
 Ho spostato la funzione mappy in zookeper.py
+
+
+## 22/05/2025
+
+### Gigi 
+
+Ho fatto delle run sulla vm. Ma con poche epoche, ora aumento le epoche
