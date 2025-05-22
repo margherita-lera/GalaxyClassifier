@@ -192,3 +192,10 @@ Ho fatto delle run sulla vm. Ma con poche epoche, ora aumento le epoche
 Splittato test e training set. !!!SCARICATE IL PACCHETTO ZIP SU TELEGRAM!!! 
 
 (branch gio) Aggiunto la possibilità di padding='same' in zk.convool_size(). Creato un'architettura che sicuramente rivoluzionerà il panorama delle CNN. Purtroppo la loss che restituisce è un nan, il motivo esula le mie attuali facoltà mentali.
+
+
+## 22/05/2025
+
+### Gio
+
+Non so perché, mettendo il batchnorm dopo l'activation e rimettendo il bias al primo strato convolutivo la loss è tornata, il risultato della prima epoca è pessimo, ma almeno non è nan. Forse mettere il pooling dopo ogni convoluzione è meglio...
