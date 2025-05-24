@@ -20,12 +20,14 @@ def mappy2D(tensor,datafr=False):
     and a new set of labels that refer to the independent probabilities of 17 different classes.
     To see the result and the classes' name in a Pandas Dataframe set the parameter 'datafr' to True. 
     '''
-    class1_3 = (tensor[:,0:3])
-    class3_2 = (tensor[:,5:7])
-    class4_2 = (tensor[:,7:9])
-    class5_4 = (tensor[:,9:13])
-    class7_3 = (tensor[:,15:18])
-    class9_3 = (tensor[:,25:28])
+    device = tensor.device if isinstance(tensor, torch.Tensor) else torch.device('cpu')
+    #tensor=torch.tensor(tensor) if not isinstance(tensor, torch.Tensor) else tensor
+    class1_3 = (tensor[:,0:3])#.unsqueeze(0)
+    class3_2 = (tensor[:,5:7])#.unsqueeze(0)
+    class4_2 = (tensor[:,7:9])#.unsqueeze(0))
+    class5_4 = (tensor[:,9:13])#.unsqueeze(0))
+    class7_3 = (tensor[:,15:18])#.unsqueeze(0))
+    class9_3 = (tensor[:,25:28])#.unsqueeze(0))
 
     #normalizing class 4 and 5
     class4_2 = torch.where(class4_2.sum(dim=1, keepdim=True) != 0, 
@@ -90,7 +92,7 @@ def mappy2D(tensor,datafr=False):
                      SBb,
                      SBc,
                      SBd,
-                     A],dim=1)
+                     A],dim=1).to(device).detach()
     return (x)
     
 def mappy(tensor,datafr=False):
@@ -105,12 +107,14 @@ def mappy(tensor,datafr=False):
     it does not inherit the device (CPU/GPU) of the model's forward pass. So you would get compatibility 
     errors if you try to use it in a model that expects a tensor.
     '''
-    class1_3 = (tensor[0:3].unsqueeze(0))
-    class3_2 = (tensor[5:7].unsqueeze(0))
-    class4_2 = (tensor[7:9].unsqueeze(0))
-    class5_4 = (tensor[9:13].unsqueeze(0))
-    class7_3 = (tensor[15:18].unsqueeze(0))
-    class9_3 = (tensor[25:28].unsqueeze(0))
+
+    device = tensor.device if isinstance(tensor, torch.Tensor) else torch.device('cpu')
+    class1_3 = (tensor[0:3])
+    class3_2 = (tensor[5:7])
+    class4_2 = (tensor[7:9])
+    class5_4 = (tensor[9:13])
+    class7_3 = (tensor[15:18])
+    class9_3 = (tensor[25:28])
     
     #normalizing class 4 and 5
     class4_2 = class4_2/class4_2.sum() if class4_2.sum() != 0 else class4_2
@@ -139,22 +143,23 @@ def mappy(tensor,datafr=False):
 
     A=class1_3[2]
 
+    values = torch.stack([
+        E0, E3, E6,
+        S0a_eon, SB0a_eon, Scd_eon,
+        SoB, SoA,
+        SAa, SAb, SAc, SAd,
+        SBa, SBb, SBc, SBd,
+        A
+    ]).to(device).detach()
+
     if datafr:
-        return pd.DataFrame([{
-            'E0': E0.item(), 'E3': E3.item(), 'E6': E6.item(),
-            'S0a_eon': S0a_eon.item(), 'SB0a_eon': SB0a_eon.item(), 'Scd_eon': Scd_eon.item(),
-            'SoB': SoB.item(), 'SoA': SoA.item(),
-            'SAa': SAa.item(), 'SAb': SAb.item(), 'SAc': SAc.item(), 'SAd': SAd.item(),
-            'SBa': SBa.item(), 'SBb': SBb.item(), 'SBc': SBc.item(), 'SBd': SBd.item(),
-            'A': A.item()
-        }])
-    else:
-        return torch.stack([
-            E0, E3, E6,
-            S0a_eon, SB0a_eon, Scd_eon,
-            SoB, SoA,
-            SAa, SAb, SAc, SAd,
-            SBa, SBb, SBc, SBd,
-            A
-        ], dim=0).to(device) #this keeps the tensor on the same device as the model
-    return (x)
+        return pd.DataFrame([dict(zip([
+            'E0', 'E3', 'E6',
+            'S0a_eon', 'SB0a_eon', 'Scd_eon',
+            'SoB', 'SoA',
+            'SAa', 'SAb', 'SAc', 'SAd',
+            'SBa', 'SBb', 'SBc', 'SBd',
+            'A'
+        ], values.cpu().numpy()))])
+    
+    return values
