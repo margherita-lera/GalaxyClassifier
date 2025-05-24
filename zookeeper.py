@@ -99,13 +99,18 @@ def mappy(tensor,datafr=False):
     This function takes as input a 1D tensor with the columns as structured in the .csv label file.
     It returns a new 1D tensor with a new set of labels that refer to the independent probabilities of 17 different classes.
     To see the result and the classes' name in a Pandas Dataframe set the parameter 'datafr' to True. 
+
+    NB:if you do a Python list of tensors (like E0, SoA, etc.), when you return it to GalaxyNet.forward, 
+    it doesn’t match the expected tensor behavior, and crucially:
+    it does not inherit the device (CPU/GPU) of the model's forward pass. So you would get compatibility 
+    errors if you try to use it in a model that expects a tensor.
     '''
-    class1_3 = (tensor[0:3])
-    class3_2 = (tensor[5:7])
-    class4_2 = (tensor[7:9])
-    class5_4 = (tensor[9:13])
-    class7_3 = (tensor[15:18])
-    class9_3 = (tensor[25:28])
+    class1_3 = (tensor[0:3].unsqueeze(0))
+    class3_2 = (tensor[5:7].unsqueeze(0))
+    class4_2 = (tensor[7:9].unsqueeze(0))
+    class5_4 = (tensor[9:13].unsqueeze(0))
+    class7_3 = (tensor[15:18].unsqueeze(0))
+    class9_3 = (tensor[25:28].unsqueeze(0))
     
     #normalizing class 4 and 5
     class4_2 = class4_2/class4_2.sum() if class4_2.sum() != 0 else class4_2
@@ -134,38 +139,22 @@ def mappy(tensor,datafr=False):
 
     A=class1_3[2]
 
-    if datafr==True:x= pd.DataFrame([{'E0':E0,
-                     'E3': E3,
-                     'E6': E6,
-                     'S0a_eon': S0a_eon,
-                     'SB0a_eon':SB0a_eon,
-                     'Scd_eon': Scd_eon,
-                     'SoB': SoB,
-                     'SoA': SoA,
-                     'SAa': SAa,
-                     'SAb': SAb,
-                     'SAc': SAc,
-                     'SAd': SAd,
-                     'SBa': SBa,
-                     'SBb': SBb,
-                     'SBc': SBc,
-                     'SBd': SBd,
-                     'A': A}])
-    else: x=torch.tensor([E0,
-                     E3,
-                     E6,
-                     S0a_eon,
-                     SB0a_eon,
-                     Scd_eon,
-                     SoB,
-                     SoA,
-                     SAa,
-                     SAb,
-                     SAc,
-                     SAd,
-                     SBa,
-                     SBb,
-                     SBc,
-                     SBd,
-                     A])
+    if datafr:
+        return pd.DataFrame([{
+            'E0': E0.item(), 'E3': E3.item(), 'E6': E6.item(),
+            'S0a_eon': S0a_eon.item(), 'SB0a_eon': SB0a_eon.item(), 'Scd_eon': Scd_eon.item(),
+            'SoB': SoB.item(), 'SoA': SoA.item(),
+            'SAa': SAa.item(), 'SAb': SAb.item(), 'SAc': SAc.item(), 'SAd': SAd.item(),
+            'SBa': SBa.item(), 'SBb': SBb.item(), 'SBc': SBc.item(), 'SBd': SBd.item(),
+            'A': A.item()
+        }])
+    else:
+        return torch.stack([
+            E0, E3, E6,
+            S0a_eon, SB0a_eon, Scd_eon,
+            SoB, SoA,
+            SAa, SAb, SAc, SAd,
+            SBa, SBb, SBc, SBd,
+            A
+        ], dim=0).to(device) #this keeps the tensor on the same device as the model
     return (x)
