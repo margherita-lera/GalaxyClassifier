@@ -185,3 +185,10 @@ Splittato test e training set. !!!SCARICATE IL PACCHETTO ZIP SU TELEGRAM!!!
 Non so perché, mettendo il batchnorm dopo l'activation e rimettendo il bias al primo strato convolutivo la loss è tornata, il risultato della prima epoca è pessimo, ma almeno non è nan. Forse mettere il pooling dopo ogni convoluzione è meglio...
 
 Non so cosa ho cambiato, ora funziona tutto, potrebbe molto essere un problema della conversione in float16 per velocizzare il training, ma non si sa
+
+
+## 25/05/2025
+
+### Gio
+
+Runnato JAGZoo e PC una ventina di trial ciascuno. Aggiunto il file CNNs.md per tenere traccia delle architetture runnate.
