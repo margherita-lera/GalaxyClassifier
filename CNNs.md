@@ -3,7 +3,9 @@
  Name | Layers | Best Loss | Trials | Epochs | Authour 
  :---: | :---: | :---: | :---: | :---: | :---: 
  JAGZoo | 5 convs + 1 fc | 0.09157407635789411 | 23 | 50 | Gio 
+ NSC | 5 conv + 1 fc | 0.09639266573163484  | 2 | 50 | Marghe
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | Gio
+ 
 
 
 
@@ -46,6 +48,15 @@
 ```
 
 I tried to go deeper in the convolutional layers. It seems that the net has learnt better than previous results with fewer layers.
+
+
+## NSC
+
+```
+NOT FOUND
+```
+
+(Not the author) The net should be the same as JAGZoo with the batchnorm put before the activation layer. More trials are required.
 
 
 ## PC
