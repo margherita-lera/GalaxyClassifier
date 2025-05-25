@@ -92,7 +92,7 @@ def mappy2D(tensor,datafr=False):
                      SBb,
                      SBc,
                      SBd,
-                     A],dim=1).to(device).detach()
+                     A],dim=1).to(device)
     return (x)
     
 def mappy(tensor,datafr=False):
