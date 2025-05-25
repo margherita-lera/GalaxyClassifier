@@ -5,7 +5,7 @@
  JAGZoo | 5 convs + 1 fc | 0.09157407635789411 | 23 | 50 | Gio 
  NSC | 5 conv + 1 fc | 0.09639266573163484  | 2 | 50 | Marghe
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | Gio
- 
+ PADel | 7 conv + 1 fc | --- | 12 | 50 | Gio
 
 
 
@@ -79,3 +79,47 @@ GalaxyNet(
 ```
 
 The almost SAP configuration. Results are not that good yet, which is reassuring.
+
+
+## PADel
+
+```
+GalaxyNet(
+  (convs): Sequential(
+    (0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), padding=same, bias=False)
+    (1): ReLU()
+    (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=same, bias=False)
+    (4): ReLU()
+    (5): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (7): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=same, bias=False)
+    (8): ReLU()
+    (9): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=same, bias=False)
+    (11): ReLU()
+    (12): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (13): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (14): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (15): ReLU()
+    (16): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (17): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (18): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (19): ReLU()
+    (20): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (21): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (22): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (23): ReLU()
+    (24): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (25): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc): Sequential(
+    (0): Flatten(start_dim=1, end_dim=-1)
+    (1): Linear(in_features=1024, out_features=100, bias=True)
+    (2): ReLU()
+    (3): Linear(in_features=100, out_features=37, bias=True)
+  )
+)
+```
+
+I want to figure out if padding is as useless as they say.
