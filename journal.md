@@ -208,3 +208,9 @@ Non so cosa ho cambiato, ora funziona tutto, potrebbe molto essere un problema d
 ### Gio
 
 Runnato JAGZoo e PC una ventina di trial ciascuno. Aggiunto il file CNNs.md per tenere traccia delle architetture runnate.
+
+### Margherita (meno tutti, ma sono solo personaggi primari)
+
+Creato marghenet.ipynb e mappynet.py che supportino la funzione di mapping per trasformare le label. Molta della mia sanità mentale è stata persa nel processo.
+
+Scritti i primi paragrafi della review di galaxyzoo in settimana.
