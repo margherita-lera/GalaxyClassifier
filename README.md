@@ -1,3 +1,7 @@
+# <center> REMEBER </center>
+## <center> If it works, don't touch it.[^1] </center>
+[^1]: unless you're me, then you can definitely touch it.
+
 # GalaxyClassifier
 Final project of the course Laboratory of Computational Physics Mod. B. We aim at analysing the [Galaxy Zoo](https://www.zooniverse.org/projects/zookeeper/galaxy-zoo/classify) dataset and build a Machine Learning tool able to classify the objects within the [dataset](https://www.kaggle.com/competitions/galaxy-zoo-the-galaxy-challenge/data). 
 
