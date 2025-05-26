@@ -1,11 +1,12 @@
 # List of architectures
 
- Name | Layers | Best Loss | Trials | Epochs | Authour 
- :---: | :---: | :---: | :---: | :---: | :---: 
- JAGZoo | 5 convs + 1 fc | 0.09157407635789411 | 23 | 50 | Gio 
- NSC | 5 conv + 1 fc | 0.06371325288077401  | 40 | 50 | Marghe
- PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | Gio
- PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | Gio
+ Name | Layers | Best Loss | Trials | Epochs | Mappy | Authour 
+ :---: | :---: | :---: | :---: | :---: | :---: | :---:
+ JAGZoo | 5 convs + 1 fc | 0.09157407635789411 | 23 | 50 | N | Gio 
+ NSC | 5 conv + 1 fc | 0.06371325288077401  | 40 | 50 | Y | Marghe
+ PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | N |Gio
+ PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | N | Gio
+ Gabnet | 5 conv + 1 fc | 0.15812857081385465 | 30 | 50 | N | Gab
 
 
 
@@ -148,5 +149,11 @@ GalaxyNet(
   )
 )
 ```
+## Gabnet
+
+```
+
+```
+
 
 I want to figure out if padding is as useless as they say.
