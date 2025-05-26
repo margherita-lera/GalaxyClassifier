@@ -1,4 +1,4 @@
-# <p align='center'> REMEBER </p>
+# <p align='center'> REMEMBER </p>
 ## <p align='center'> If it works, don't touch it.[^1] </p>
 [^1]: unless you're me, then you can definitely touch it.
 
