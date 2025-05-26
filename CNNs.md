@@ -148,7 +148,11 @@ GalaxyNet(
     (3): Linear(in_features=100, out_features=37, bias=True)
   )
 )
+
 ```
+
+I want to figure out if padding is as useless as they say.
+
 ## Gabnet
 
 ```
@@ -156,4 +160,3 @@ GalaxyNet(
 ```
 
 
-I want to figure out if padding is as useless as they say.
