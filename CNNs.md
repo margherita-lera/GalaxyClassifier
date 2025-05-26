@@ -5,7 +5,7 @@
  JAGZoo | 5 convs + 1 fc | 0.09157407635789411 | 23 | 50 | Gio 
  NSC | 5 conv + 1 fc | 0.09639266573163484  | 2 | 50 | Marghe
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | Gio
- PADel | 7 conv + 1 fc | --- | 12 | 50 | Gio
+ PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | Gio
 
 
 
