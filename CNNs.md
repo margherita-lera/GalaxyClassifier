@@ -3,7 +3,7 @@
  Name | Layers | Best Loss | Trials | Epochs | Authour 
  :---: | :---: | :---: | :---: | :---: | :---: 
  JAGZoo | 5 convs + 1 fc | 0.09157407635789411 | 23 | 50 | Gio 
- NSC | 5 conv + 1 fc | 0.09639266573163484  | 2 | 50 | Marghe
+ NSC | 5 conv + 1 fc | 0.06371325288077401  | 40 | 50 | Marghe
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | Gio
  PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | Gio
 
@@ -52,11 +52,38 @@ I tried to go deeper in the convolutional layers. It seems that the net has lear
 
 ## NSC
 
+```GalaxyNet(
+  (convs): Sequential(
+    (0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (5): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): ReLU()
+    (7): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (8): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (9): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): ReLU()
+    (11): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (12): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (14): ReLU()
+    (15): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (16): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), bias=False)
+    (17): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (18): ReLU()
+    (19): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc): Sequential(
+    (0): Flatten(start_dim=1, end_dim=-1)
+    (1): Linear(in_features=512, out_features=100, bias=True)
+    (2): ReLU()
+    (3): Linear(in_features=100, out_features=37, bias=True)
+  )
+)
 ```
-NOT FOUND
-```
-
-(Not the author) The net should be the same as JAGZoo with the batchnorm put before the activation layer. More trials are required.
+The net should be the same as JAGZoo with the batchnorm put before the activation layer. Also MAPPING included.
 
 
 ## PC
