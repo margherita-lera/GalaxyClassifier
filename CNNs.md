@@ -183,6 +183,8 @@ I want to figure out if padding is as useless as they say.
    learning_rate : 0.12703853693077546
    momentum : 0.9
    batch_size : 512
+   crop : 312
+   resize : 256
 ```
    
    
