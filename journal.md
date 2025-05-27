@@ -214,3 +214,19 @@ Runnato JAGZoo e PC una ventina di trial ciascuno. Aggiunto il file CNNs.md per 
 Creato marghenet.ipynb e mappynet.py che supportino la funzione di mapping per trasformare le label. Molta della mia sanità mentale è stata persa nel processo.
 
 Scritti i primi paragrafi della review di galaxyzoo in settimana.
+
+
+ ## 26/05/2025
+
+ ### Tutti
+
+ Fatto cose, ottenuto dei risultati, creata un'altra mappy.
+
+
+ ## 27/05/2025
+
+ ### Gio
+
+ Creato file fisher.ipynb per salvare le classi di net, servono per caricare le classi tramite i save.
+
+ Aggiornato README.md
