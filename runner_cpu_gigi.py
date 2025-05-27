@@ -70,8 +70,8 @@ class GalaxyJungle(Dataset):
 
 transfs = transforms.Compose([
     transforms.ToTensor(), # Riscala le immagini tra 0 e 1
-    transforms.CenterCrop(300),
-    transforms.Resize(128),
+    transforms.CenterCrop(312),
+    transforms.Resize(256),
     # sarebbe interessante implementare un random crop prima del center crop per decentrare un poco le immagini????
     #transforms.RandomHorizontalFlip(), # horizontal flip
     #transforms.RandomVerticalFlip(), # vertical flip
@@ -86,7 +86,7 @@ class GalaxyNet(nn.Module):
     def __init__(self, n_conv_layers, num_filters, num_neurons, activation, is_rgb=False, verbose=False):
         super().__init__()
         rgb = 3 if is_rgb else 1
-        input_size = 128
+        input_size = 256
         num_labels = 37
         self.loss_dict = {'batch' : [], 'epoch' : [], 'vbatch' : [], 'vepoch' : []}
         self.activation = activation
@@ -237,17 +237,17 @@ def objective(trial:optuna.Trial):
     ## Hyperspace
     num_conv_layers = 3
     #qui tuniamo il numero di filri, per layer più profondi ci vogliono più filtri (64-28 è consigliato per pattern astratti e combinazioni, mentre fino a 32 per dettagli locali) quindi proviamo (VGG usa fino a 512 per esempio).
-    num_filters = [int(trial.suggest_int("num_filters_"+str(i), 6, 94 , step=8)) for i in range(num_conv_layers)]
+    num_filters = [int(trial.suggest_int("num_filters_"+str(i), 6, 86 , step=8)) for i in range(num_conv_layers)]
     ## abbiamo numneurons1 e numn neurons2,se mettiamo un grid sampler o un random sampler con num_neurons e basta penso che lui provi diverse combinazioni
-    num_neurons = trial.suggest_int("num_neurons", 10, 120, step=10) 
+    num_neurons = trial.suggest_int("num_neurons", 30, 120, step=10) 
     ### abbiamo chiamato mode l'activation function nell'initialization dei pesi o la chiamiamo activation o FUNZIONEDIATTIVAZIONE così optuna poi iniializza in base a quello
     activation = trial.suggest_categorical("activation", ["ReLU", "LeakyReLU"])
-    optimizer = trial.suggest_categorical("optimizer", ["Adam", "SGD", "AdamW"]) #AdamW è suggerito per CNN.
-    learning_rate = trial.suggest_float("learning_rate", 1e-3, 1e-1, log=True) #log true cerca i valori in scala logaritmica
-    momentum = trial.suggest_float("momentum", 0.2, 0.9, step=0.1) #per SGD
+    optimizer = trial.suggest_categorical("optimizer", ["Adam", "SGD", "AdamW", 'RMSprop']) #AdamW è suggerito per CNN.
+    learning_rate = trial.suggest_float("learning_rate", 5e-3, 5e-1, log=True) #log true cerca i valori in scala logaritmica
+    momentum = trial.suggest_float("momentum", 0.4, 0.9, step=0.1) #per SGD
     # batch size da tunare?
     batch_size = 512
-    epochs = 12
+    epochs = 50
     loss_function = nn.MSELoss()
     
     ##### Training phase
@@ -259,7 +259,7 @@ def objective(trial:optuna.Trial):
     activation = getattr(nn, activation)
     #print(activation)
     model = GalaxyNet(num_conv_layers, num_filters, num_neurons, activation).to(device)
-    if optimizer == 'SGD': optimizer = getattr(optim, optimizer)(model.parameters(), lr=learning_rate, momentum = momentum)
+    if optimizer in ('SGD', 'RMSprop'): optimizer = getattr(optim, optimizer)(model.parameters(), lr=learning_rate, momentum = momentum)
     else: optimizer = getattr(optim, optimizer)(model.parameters(), lr=learning_rate)
 
     
@@ -278,7 +278,7 @@ def objective(trial:optuna.Trial):
 
 # %%
 optuna.logging.get_logger("optuna").addHandler(logging.StreamHandler(sys.stdout))
-study_name = "pinned"  # Unique identifier of the study.
+study_name = "3conv50epoch"  # Unique identifier of the study.
 storage_name = "sqlite:///{}.db".format(study_name)
 study = optuna.create_study(direction='minimize', study_name=study_name, storage=storage_name, load_if_exists=True)
 study.optimize(objective, n_trials=50)
