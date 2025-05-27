@@ -3,11 +3,13 @@ import torch
 
 
 
-def convool_size(input_dimension, kernel_size, stride, padding=0, dilation=1):
+def convool_size(input_size, kernel_size, stride, padding=0, dilation=1):
     '''
     Returns Conv2d and Max_pool output size for a square input tensor.
     '''
-    return ((input_dimension + 2 * padding - dilation * (kernel_size - 1) - 1) // stride) + 1
+    if padding == 'same': output_size = input_size
+    else: output_size = ((input_size + 2 * padding - dilation * (kernel_size - 1) - 1) // stride) + 1
+    return output_size
 
 
 
