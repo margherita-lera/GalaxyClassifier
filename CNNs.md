@@ -7,6 +7,7 @@
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | N |Gio
  PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | N | Gio
  Gabnet | 5 conv + 1 fc | 0.15812857081385465 | 30 | 50 | N | Gab
+ 3conv | 3 conv + 1 fc | 0.13609738523046297 | 67 | 50 | N | Gigi
 
 
 
@@ -158,5 +159,33 @@ I want to figure out if padding is as useless as they say.
 ```
 
 ```
+
+## 3conv
+
+``` GalaxyNet()
+   for i in range(1,3):
+            self.convs.append(nn.Conv2d(num_filters[i-1], num_filters[i], kernel_size=3, stride=2, bias=False))
+            self.convs.append(self.activation())
+            self.convs.append(nn.BatchNorm2d(num_filters[i]))
+            self.convs.append(nn.MaxPool2d(kernel_size=2))
+   self.fc = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(self.out_feature, num_neurons),
+            self.activation(),
+            nn.Linear(num_neurons, num_labels)
+            )
+   num_filters[0] : 6
+   num_filters[1] : 38
+   num_filters[2] : 30
+   num_neurons : 80
+   activation : "LeakyReLU"
+   optimizer : SGD
+   learning_rate : 0.12703853693077546
+   momentum : 0.9
+   batch_size : 512
+```
+   
+   
+
 
 
