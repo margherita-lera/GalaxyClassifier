@@ -1,6 +1,6 @@
 import pandas as pd
 import torch
-
+import numpy as np
 
 
 def convool_size(input_dimension, kernel_size, stride, padding=0, dilation=1):
@@ -163,3 +163,69 @@ def mappy(tensor,datafr=False):
         ], values.cpu().numpy()))])
     
     return values
+
+
+
+def mappy_df(tensor):
+
+    '''
+    This function takes a 2d Dataframe and does all the same again!
+    '''
+    
+    class1_3 = np.array(tensor.iloc[:,1:4])
+    class3_2 = np.array(tensor.iloc[:,6:8])
+    class4_2 = np.array(tensor.iloc[:,8:10])
+    class5_4 = np.array(tensor.iloc[:,10:14])
+    class7_3 = np.array(tensor.iloc[:,16:19])
+    class9_3 = np.array(tensor.iloc[:,26:29])
+    
+    #normalizing class 4 and 5
+    class4_2 = np.where(class4_2.sum(axis=1, keepdims=True) != 0, 
+                           class4_2 / class4_2.sum(axis=1, keepdims=True), 
+                           class4_2)
+    class5_4 = np.where(class5_4.sum(axis=1, keepdims=True) != 0, 
+                           class5_4 / class5_4.sum(axis=1, keepdims=True), 
+                           class5_4)
+    E0=class7_3[:,0]
+    E3=class7_3[:,1]
+    E6=class7_3[:,2]
+
+    S0a_eon=class9_3[:,0]
+    SB0a_eon=class9_3[:,1]
+    Scd_eon=class9_3[:,2]
+
+    SoB=class4_2[:,1]*class3_2[:,0]
+    SoA=class4_2[:,1]*class3_2[:,1]
+
+    SAa=class4_2[:,0]*class3_2[:,1]*class5_4[:,3]
+    SAb=class4_2[:,0]*class3_2[:,1]*class5_4[:,2]
+    SAc=class4_2[:,0]*class3_2[:,1]*class5_4[:,1]
+    SAd=class4_2[:,0]*class3_2[:,1]*class5_4[:,0]
+
+    SBa=class4_2[:,0]*class3_2[:,0]*class5_4[:,3]
+    SBb=class4_2[:,0]*class3_2[:,0]*class5_4[:,2]
+    SBc=class4_2[:,0]*class3_2[:,0]*class5_4[:,1]
+    SBd=class4_2[:,0]*class3_2[:,0]*class5_4[:,0]
+
+    A=class1_3[:,2]
+
+    x= pd.DataFrame({'GalaxyID':tensor['GalaxyID'],
+                     'E0':E0,
+                     'E3': E3,
+                     'E6': E6,
+                     'S0a_eon': S0a_eon,
+                     'SB0a_eon':SB0a_eon,
+                     'Scd_eon': Scd_eon,
+                     'SoB': SoB,
+                     'SoA': SoA,
+                     'SAa': SAa,
+                     'SAb': SAb,
+                     'SAc': SAc,
+                     'SAd': SAd,
+                     'SBa': SBa,
+                     'SBb': SBb,
+                     'SBc': SBc,
+                     'SBd': SBd,
+                     'A': A})
+    
+    return x
