@@ -185,3 +185,32 @@ Splittato test e training set. !!!SCARICATE IL PACCHETTO ZIP SU TELEGRAM!!!
 Non so perché, mettendo il batchnorm dopo l'activation e rimettendo il bias al primo strato convolutivo la loss è tornata, il risultato della prima epoca è pessimo, ma almeno non è nan. Forse mettere il pooling dopo ogni convoluzione è meglio...
 
 Non so cosa ho cambiato, ora funziona tutto, potrebbe molto essere un problema della conversione in float16 per velocizzare il training, ma non si sa
+
+
+## 25/05/2025
+
+### Gio
+
+Runnato JAGZoo e PC una ventina di trial ciascuno. Aggiunto il file CNNs.md per tenere traccia delle architetture runnate.
+
+### Margherita (meno tutti, ma sono solo personaggi primari)
+
+Creato marghenet.ipynb e mappynet.py che supportino la funzione di mapping per trasformare le label. Molta della mia sanità mentale è stata persa nel processo.
+
+Scritti i primi paragrafi della review di galaxyzoo in settimana.
+
+
+ ## 26/05/2025
+
+ ### Tutti
+
+ Fatto cose, ottenuto dei risultati, creata un'altra mappy.
+
+
+ ## 27/05/2025
+
+ ### Gio
+
+ Creato file fisher.ipynb per salvare le classi di net, servono per caricare le classi tramite i save.
+
+ Aggiornato README.md
