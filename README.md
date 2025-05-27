@@ -17,7 +17,7 @@ Not so useful links anymore:
 
 
 # Using this repo
-Do not. If you are reading these lines, you are possibly not a member of our group, this repo is the result of hours and hours of obsessed and possessed coding of three different people with very different views on what coding should be. You will not find anything useful in here. If you do, please report what you find. 
+Do not. If you are reading these lines, you are possibly not a member of our group, this repo is the result of hours and hours of obsessed and possessed coding of four different people with very different views on what coding should be. You will not find anything useful in here. If you do, please report what you find. 
 
 If you are keep reading, I, as the `README.md` file, I am very sorry for your endeavour of trying to put some sense in all of this.
 
