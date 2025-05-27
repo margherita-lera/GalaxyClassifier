@@ -1,5 +1,9 @@
 *.zip
 .*checkpoints/
-.virtual_documents/
+*.virtual_documents/
 data/
 gnet/
+NN.ipynb
+mapper.ipynb
+mappy.py
+__pycache__/
