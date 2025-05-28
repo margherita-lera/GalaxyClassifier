@@ -5,9 +5,11 @@
 import torch
 import os
 
+os.makedirs('fixed')
 with os.scandir() as dir:
     for file in dir:
-        loader = torch.load(file)
-        torch.save({'model_state_dict': loader['model_state_dict'], 
-                    'optim_state_dict' : loader['optim_state_dict']}, file + '.pt')
-        torch.save(loader['losses'], file + '.pyd')
+        if file.name != 'saves_saviour.py' and file.is_file():
+            loader = torch.load(file)
+            torch.save({'model_state_dict': loader['model_state_dict'], 
+                    'optim_state_dict' : loader['optim_state_dict']}, 'fixed/' + file.name + '.pt')
+            torch.save(loader['losses'], 'fixed/' + file.name + '.pyd')
