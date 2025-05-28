@@ -253,12 +253,17 @@ def objective(trial:optuna.Trial):
 
     torch.save({
         'model_state_dict': model.state_dict(),
-        'optim_state_dict': optimizer.state_dict(),
-        'losses': model.loss_dict
+        'optim_state_dict': optimizer.state_dict()
     }, 'model.pt')
 
+    torch.save(model.loss_dict, 'model.pyd')
+
     art_id = optuna.artifacts.upload_artifact(artifact_store=artifact_store, file_path='model.pt', study_or_trial=trial.study)
-    trial.set_user_attr('artifact_id', art_id)
+    dict_id = optuna.artifacts.upload_artifact(artifact_store=artifact_store, file_path='model.pyd', study_or_trial=trial.study)
+
+    trial.set_user_attr('model_optim_id', art_id)
+    trial.set_user_attr('ditc_loss_id', dict_id)
+
 
     
     return epoch_last_val_loss
