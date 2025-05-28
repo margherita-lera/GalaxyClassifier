@@ -268,4 +268,4 @@ optuna.logging.get_logger("optuna").addHandler(logging.StreamHandler(sys.stdout)
 study_name = "PADel_map"
 storage_name = f"sqlite:///CanOTuna.db"
 study = optuna.create_study(direction='minimize', study_name=study_name, storage=storage_name, load_if_exists=True)
-study.optimize(objective, n_trials=1)
+study.optimize(objective, n_trials=50)

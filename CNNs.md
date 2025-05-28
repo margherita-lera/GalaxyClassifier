@@ -6,6 +6,7 @@
  NSC | 5 conv + 1 fc | 0.06371325288077401  | 40 | 50 | Y | Marghe
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | N |Gio
  PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | N | Gio
+ PADel_map | 7 conv + 1 fc |  0.06129642133313233 | 42 | 50 | Y | Gio
  Gabnet | 5 conv + 1 fc | 0.15812857081385465 | 30 | 50 | N | Gab
  3conv | 3 conv + 1 fc | 0.13609738523046297 | 67 | 50 | N | Gigi
 
