@@ -7,7 +7,7 @@
  PC | 1 conv + 1 fc | 0.12687206503096748 | 16 | 50 | N |Gio
  PADel | 7 conv + 1 fc |  0.08708066615417723 | 12 | 50 | N | Gio
  PADel_map | 7 conv + 1 fc |  0.06129642133313233 | 42 | 50 | Y | Gio
- Gabnet | 5 conv + 1 fc | 0.15812857081385465 | 30 | 50 | N | Gab
+ Skynet | 5 conv + 2 fc |  | 30 | 50 | N | Gab
  3conv | 3 conv + 1 fc | 0.13609738523046297 | 67 | 50 | N | Gigi
 
 
@@ -155,9 +155,41 @@ GalaxyNet(
 
 I want to figure out if padding is as useless as they say.
 
-## Gabnet
+## Skynet
 
 ```
+Convs output size: 4
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+├─Sequential: 1-1                        --
+|    └─Conv2d: 2-1                       2,496
+|    └─ReLU: 2-2                         --
+|    └─MaxPool2d: 2-3                    --
+|    └─Conv2d: 2-4                       307,328
+|    └─ReLU: 2-5                         --
+|    └─MaxPool2d: 2-6                    --
+|    └─Conv2d: 2-7                       409,728
+|    └─ReLU: 2-8                         --
+|    └─Conv2d: 2-9                       409,728
+|    └─ReLU: 2-10                        --
+|    └─Conv2d: 2-11                      819,456
+|    └─ReLU: 2-12                        --
+|    └─MaxPool2d: 2-13                   --
+├─Sequential: 1-2                        --
+|    └─Flatten: 2-14                     --
+|    └─Dropout: 2-15                     --
+|    └─Linear: 2-16                      8,390,656
+|    └─ReLU: 2-17                        --
+|    └─Linear: 2-18                      2,098,176
+|    └─ReLU: 2-19                        --
+|    └─Dropout: 2-20                     --
+|    └─Linear: 2-21                      37,925
+=================================================================
+Total params: 12,475,493
+Trainable params: 12,475,493
+Non-trainable params: 0
+=================================================================
 
 ```
 
