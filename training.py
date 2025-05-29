@@ -14,8 +14,9 @@ import pickle
 
 # Set if you want to use rgb/mappy
 rgb = False
-mappy = True
-epochs = 201
+mappy = False
+epoch_start = 1
+epochs =1001
 
 
 # Transformation to training images
@@ -66,7 +67,7 @@ class GalaxyJungle(Dataset):
 
 
 # Tweak the class as you need, you should not change the mappy and rgb settings, would have probably been clearer if we created GalaxyNet subclasses...
-# INVJAGZoo
+# PC
 class GalaxyNet(nn.Module):
     def __init__(self, activation, initialization=False, mappy=False, is_rgb=False):
         super().__init__()
@@ -79,34 +80,10 @@ class GalaxyNet(nn.Module):
         self.activation = activation
         
         self.convs = nn.Sequential(
-            nn.Conv2d(rgb, 16, 3, bias=False),
-            nn.BatchNorm2d(16),
+            nn.Conv2d(rgb, 64, 3, bias=False),
             self.activation(),
-
-            nn.MaxPool2d(2),
-            
-            nn.Conv2d(16, 16, 3, bias=False),
-            nn.BatchNorm2d(16),
-            self.activation(),
-
-            nn.MaxPool2d(2),
-
-            nn.Conv2d(16, 32, 3, bias=False),
-            nn.BatchNorm2d(32),
-            self.activation(),
-
-            nn.MaxPool2d(2),
-
-            nn.Conv2d(32, 64, 3, bias=False),
             nn.BatchNorm2d(64),
-            self.activation(),
-
-            nn.MaxPool2d(2),
-
-            nn.Conv2d(64, 128, 3, bias=False),
-            nn.BatchNorm2d(128),            
-            self.activation(),
-
+            
             nn.MaxPool2d(2)
             )
 
@@ -116,7 +93,7 @@ class GalaxyNet(nn.Module):
         if input_size < 2: raise ValueError('You shrank too much dude.')
         print(f'Convs output size: {input_size}')
 
-        input_linear = 128 * input_size * input_size
+        input_linear = 64 * input_size * input_size
         
         self.fc = nn.Sequential(
             nn.Flatten(),
@@ -214,12 +191,17 @@ test = GalaxyJungle('../data/validation/validation_solutions_rev1.csv', '../data
 train_loader = DataLoader(training, batch_size=32, shuffle=True, num_workers=os.cpu_count())
 test_loader = DataLoader(test, batch_size=32, shuffle=False, num_workers=os.cpu_count())    
 
-
 model = GalaxyNet(nn.ReLU, initialization=False, mappy=mappy, is_rgb=rgb).to(device)
-optimizer = optim.Adam(model.parameters(), lr=.001)
+optimizer = optim.SGD(model.parameters(), lr=.002, momentum=.6)
 loss_function = nn.MSELoss()
 
-for epoch in range(1, epochs):
+### to resume training uncomment next lines
+## NOTE: the loss_dict will be empty, remember which is the last loss_{}.pickle file of previous trainings to append the values all together
+# loader = torch.load('model_optim_{}.pt', weights_only=True)
+# model.load_state_dict(loader['model_state_dict'])
+# optimizer.load_state_dict(loader['optimizer_state_dict'])
+
+for epoch in range(epoch_start, epochs):
     print(f'Training epoch {epoch}')
     one_epoch_train(model, train_loader, optimizer, loss_function)
 
@@ -231,5 +213,4 @@ for epoch in range(1, epochs):
                     'optimizer_state_dict': optimizer.state_dict()
                     }, f'model_optim_{epoch}.pt')
 
-        with open(f'loss_{epoch}.pickle', 'wb') as fout:
-            pickle.dump(model.loss_dict, fout, protocol=-1)
+        with open(f'loss_{epoch}.pickle', 'wb') as fout: pickle.dump(model.loss_dict, fout, protocol=-1)
