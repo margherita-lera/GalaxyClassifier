@@ -34,7 +34,7 @@ test_transfs = transforms.Compose([
     ])
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-print('spada e s' + device)
+print('spada e s' + str(device))
 
 
 class GalaxyJungle(Dataset):
