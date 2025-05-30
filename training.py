@@ -201,8 +201,7 @@ loss_function = nn.MSELoss()
 # optimizer.load_state_dict(loader['optimizer_state_dict'])
 
 #with open('loss_{}.pickle', 'rb') as fin: losses = pickle.load(fin)
-#for key in losses.keys():
-#    for item in losses[key]: model.loss_dict[key].append(item)
+# model.loss_dict = losses
 
 
 for epoch in range(epoch_start, epochs):
