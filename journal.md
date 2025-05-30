@@ -230,3 +230,13 @@ Scritti i primi paragrafi della review di galaxyzoo in settimana.
  Creato file fisher.ipynb per salvare le classi di net, servono per caricare le classi tramite i save.
 
  Aggiornato README.md
+
+ ## 30/05/2025
+
+ ### Tutti ma non gigi
+
+ Run varie di CNN e smattamenti vari per le net che non overfittano mai. Uso di GPU personali e su Cloudveneto. Sono tutti un po' stressati mi sembra
+
+ ##à Gigi
+
+ Sto scrivendo un po' su overleaf, la vita è bella e c'è il sole.
