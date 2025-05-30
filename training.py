@@ -195,11 +195,15 @@ model = GalaxyNet(nn.ReLU, initialization=False, mappy=mappy, is_rgb=rgb).to(dev
 optimizer = optim.SGD(model.parameters(), lr=.002, momentum=.6)
 loss_function = nn.MSELoss()
 
-### to resume training uncomment next lines
-## NOTE: the loss_dict will be empty, remember which is the last loss_{}.pickle file of previous trainings to append the values all together
+### to resume training uncomment next lines (and edit with last epoch num)
 # loader = torch.load('model_optim_{}.pt', weights_only=True)
 # model.load_state_dict(loader['model_state_dict'])
 # optimizer.load_state_dict(loader['optimizer_state_dict'])
+
+#with open('loss_{}.pickle', 'rb') as fin: losses = pickle.load(fin)
+#for key in losses.keys():
+#    for item in losses[key]: model.loss_dict[key].append(item)
+
 
 for epoch in range(epoch_start, epochs):
     print(f'Training epoch {epoch}')
