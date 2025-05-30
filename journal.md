@@ -237,6 +237,6 @@ Scritti i primi paragrafi della review di galaxyzoo in settimana.
 
  Run varie di CNN e smattamenti vari per le net che non overfittano mai. Uso di GPU personali e su Cloudveneto. Sono tutti un po' stressati mi sembra
 
- ##à Gigi
+ ### Gigi
 
  Sto scrivendo un po' su overleaf, la vita è bella e c'è il sole.
