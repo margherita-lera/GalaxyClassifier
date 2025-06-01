@@ -9,7 +9,7 @@
  PADel_map | 7 conv + 1 fc |  0.06129642133313233 | 42 | 50 | Y | Gio
  Skynet | 5 conv + 2 fc |  | 30 | 50 | N | Gab
  3conv | 3 conv + 1 fc | 0.13609738523046297 | 67 | 50 | N | Gigi
-
+ VGG | VGG | 0.08338175853681867 | 30 | 50 | N | Chad
 
 
 # Inside the Architectures
