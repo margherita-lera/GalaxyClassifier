@@ -6,4 +6,10 @@ gnet/
 NN.ipynb
 mapper.ipynb
 mappy.py
+CanOTuna.db
+export.ipynb
+model.pt
+galaxynet
+artifacts.py
+artifacts/
 __pycache__/
