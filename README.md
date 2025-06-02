@@ -16,7 +16,7 @@ Useful link:
 # Using this repo
 Do not. If you are reading these lines, you are possibly not a member of our group, this repo is the result of hours and hours of obsessed and possessed coding of four different people with very different views on what coding should be. You will not find anything useful in here. If you do, please report what you find. 
 
-If you are keep reading, I, as the `README.md` file, I am very sorry for your endeavour of trying to put some sense in all of this.
+If you are keep reading, I, as the `README.md` file, am very sorry for your endeavour of trying to put some sense in all of this.
 
 * [CNNs.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/CNNs.md) Results, description, and considerations on the architectures we used.
 * [Readdata.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/Readdata.ipynb) Forgotten piece of code to visualize qt galaxies (comes in colours!).
