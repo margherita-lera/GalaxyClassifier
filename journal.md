@@ -238,5 +238,21 @@ Scritti i primi paragrafi della review di galaxyzoo in settimana.
  Run varie di CNN e smattamenti vari per le net che non overfittano mai. Uso di GPU personali e su Cloudveneto. Sono tutti un po' stressati mi sembra
 
  ### Gigi
-
  Sto scrivendo un po' su overleaf, la vita è bella e c'è il sole.
+
+## 03/06/2025
+
+Oblivion has followed...
+
+### Tutti, in più giorni
+Abbiamo trascurato di aggiornare il journal, fortunatamente per il mio gruppo esisto io e sono qui a risolvere ogni problema.
+
+Pensavamo che non funzionasse niente, che le nostri reti fossero inutili, che non avessimo nessuno risultato utile. Abbiamo lambito l'alcolismo. E poi sono arrivate PADel e VGG. Funziona tutto, tutto ha senso, siamo felici e beviamo per festeggiare.
+
+Abbiamo scritto diverso codice per mostrare i risultati delle nostre potentissimi e insuperabili reti. Per lo più dovrebbe trovarsi in jungle_book, ma siamo dei burloni, quindi chissà.
+
+Ora bisogna concentrarsi a finire di scrivere il paper.
+
+Probabilmente la nostra storia è quasi finita, ma forse il vero tesoro sono gli amici che abbiamo fatto lunga la strada.
+
+Forse dovrei tornare indietro a cercarli meglio.
