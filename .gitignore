@@ -9,6 +9,8 @@ mappy.py
 CanOTuna.db
 export.ipynb
 model.pt
+loss_*
+savings*
 galaxynet
 artifacts.py
 artifacts/
