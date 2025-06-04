@@ -8,7 +8,9 @@ mapper.ipynb
 mappy.py
 CanOTuna.db
 export.ipynb
-model.pt
+model*
+jungle*
+tables
 loss_*
 savings*
 galaxynet
