@@ -15,3 +15,4 @@ galaxynet
 artifacts.py
 artifacts/
 __pycache__/
+model_optim_50.pt
