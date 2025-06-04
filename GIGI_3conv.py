@@ -20,7 +20,8 @@ from PIL import Image
 import zookeeper as zk  # convool_size & mappy
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-#print(device)
+print(device)
+print(device)
 
 # %%
 input_size = 128
@@ -229,33 +230,35 @@ def one_epoch_eval(model, test_loader, loss_function, verbose=False):
 # ## OPTUNA
 # 
 
-DS = GalaxyJungle('../data/training/training_solutions_rev1.csv', '../data/training/', transfs)
+DS = GalaxyJungle('../../data/training/training_solutions_rev1.csv', '../../data/training/', transfs)
 training, test = random_split(DS, [0.8, 0.2])
+
+artifact_store = optuna.artifacts.FileSystemArtifactStore(base_path= './artifacts')
 
 def objective(trial:optuna.Trial):
    
     ## Hyperspace
     num_conv_layers = 3
     #qui tuniamo il numero di filri, per layer più profondi ci vogliono più filtri (64-28 è consigliato per pattern astratti e combinazioni, mentre fino a 32 per dettagli locali) quindi proviamo (VGG usa fino a 512 per esempio).
-    num_filters = [int(trial.suggest_int("num_filters_"+str(i), 6, 86 , step=8)) for i in range(num_conv_layers)]
+    num_filters = [6,38,30]
     ## abbiamo numneurons1 e numn neurons2,se mettiamo un grid sampler o un random sampler con num_neurons e basta penso che lui provi diverse combinazioni
-    num_neurons = trial.suggest_int("num_neurons", 30, 120, step=10) 
+    num_neurons = 80
     ### abbiamo chiamato mode l'activation function nell'initialization dei pesi o la chiamiamo activation o FUNZIONEDIATTIVAZIONE così optuna poi iniializza in base a quello
-    activation = trial.suggest_categorical("activation", ["ReLU", "LeakyReLU"])
-    optimizer = trial.suggest_categorical("optimizer", ["Adam", "SGD", "AdamW", 'RMSprop']) #AdamW è suggerito per CNN.
-    learning_rate = trial.suggest_float("learning_rate", 5e-3, 5e-1, log=True) #log true cerca i valori in scala logaritmica
-    momentum = trial.suggest_float("momentum", 0.4, 0.9, step=0.1) #per SGD
+    activation ="LeakyReLU"
+    optimizer = "SGD"
+    learning_rate =0.12703853693077546
+    momentum = 0.9
     # batch size da tunare?
     batch_size = 512
-    epochs = 50
+    epochs = 500
     loss_function = nn.MSELoss()
     
     ##### Training phase
     
     
     
-    train_loader = DataLoader(training, batch_size=batch_size, shuffle=True, num_workers=8)
-    test_loader = DataLoader(test, batch_size=batch_size, shuffle=False, num_workers=8) 
+    train_loader = DataLoader(training, batch_size=batch_size, shuffle=True, num_workers=16)
+    test_loader = DataLoader(test, batch_size=batch_size, shuffle=False, num_workers=16) 
     activation = getattr(nn, activation)
     #print(activation)
     model = GalaxyNet(num_conv_layers, num_filters, num_neurons, activation).to(device)
@@ -272,6 +275,16 @@ def objective(trial:optuna.Trial):
         if trial.should_prune():
             raise optuna.TrialPruned()
 
+    torch.save({
+        'model_state_dict': model.state_dict(),
+        'optim_state_dict': optimizer.state_dict(),
+        'losses': model.loss_dict}, 'model.pt')
+    
+    art_id = optuna.artifacts.upload_artifact(
+        artifact_store=artifact_store,
+        artifact_name="model.pt",
+        study_or_trial=trial.study)
+    trial.set_user_attr("artifact_id", art_id)
     
     score = epoch_last_val_loss
     return score
@@ -279,9 +292,9 @@ def objective(trial:optuna.Trial):
 # %%
 optuna.logging.get_logger("optuna").addHandler(logging.StreamHandler(sys.stdout))
 study_name = "3conv50epoch"  # Unique identifier of the study.
-storage_name = "sqlite:///{}.db".format(study_name)
+storage_name = "sqlite:///{}.db".format(study_name) ### setta perpiù studi in stesso db
 study = optuna.create_study(direction='minimize', study_name=study_name, storage=storage_name, load_if_exists=True)
-study.optimize(objective, n_trials=50)
+study.optimize(objective, n_trials=1)
 
 # %%
 
