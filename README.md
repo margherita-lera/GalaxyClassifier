@@ -18,7 +18,7 @@ Do not. If you are reading these lines, you are possibly not a member of our gro
 
 If you are keep reading, I, as the `README.md` file, am very sorry for your endeavour of trying to put some sense in all of this.
 
-Is the code in the main updated? We kinda believe so.
+Is the code in the main updated? We checked, we do not know.
 * [CNNs.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/CNNs.md) Results, description, and considerations on the architectures we used.
 * [README.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/README.md) MY GOD THAT'S ME!
 * [Readdata.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/Readdata.ipynb) Forgotten piece of code to visualize qt galaxies (comes in colours!).
