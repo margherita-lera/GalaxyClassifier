@@ -20,9 +20,10 @@ If you are keep reading, I, as the `README.md` file, am very sorry for your ende
 
 Is the code in the main updated? We checked, we do not know.
 * [CNNs.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/CNNs.md) Results, description, and considerations on the architectures we used.
-* [README.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/README.md) MY GOD THAT'S ME!
+* [README.md](https://www.youtube.com/watch?v=xvFZjo5PgG0) MY GOD THAT'S ME!
 * [Readdata.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/Readdata.ipynb) Forgotten piece of code to visualize qt galaxies (comes in colours!).
 * [charter.py](https://github.com/margherita-lera/GalaxyClassifier/blob/main/charter.py) Optuna script for optuning the optunable hyperparameters.
+* [feature_map.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/feature_map.ipynb) Feature maps illustration. Get to know your local convolutional layer.
 * [fisher.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/fisher.ipynb) Contains almost all of our CNNs as pytorch classes, should be used to copy-paste when you want to load the models.
 * [galaxy_gazer.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/galaxy_gazer.ipynb) By running this notebook, and downloading model_optim_110.pt one can classify images from the test set of the Kaggle GalaxyZoo2 dataset (beware the path to data).
 * [journal.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/journal.md) Day by day you shall write what you do. Fail you should, oblivion will follow, chaos, nightmares.
