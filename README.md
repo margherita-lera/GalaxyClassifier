@@ -20,7 +20,7 @@ If you are keep reading, I, as the `README.md` file, am very sorry for your ende
 
 Is the code in the main updated? We checked, we do not know.
 * [CNNs.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/CNNs.md) Results, description, and considerations on the architectures we used.
-* [README.md](https://www.youtube.com/watch?v=xvFZjo5PgG0) MY GOD THAT'S ME!
+* [README.md](https://github.com/margherita-lera/GalaxyClassifier/blob/main/README.md) MY GOD THAT'S ME!
 * [Readdata.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/Readdata.ipynb) Forgotten piece of code to visualize qt galaxies (comes in colours!).
 * [charter.py](https://github.com/margherita-lera/GalaxyClassifier/blob/main/charter.py) Optuna script for optuning the optunable hyperparameters.
 * [feature_map.ipynb](https://github.com/margherita-lera/GalaxyClassifier/blob/main/feature_map.ipynb) Feature maps illustration. Get to know your local convolutional layer.
