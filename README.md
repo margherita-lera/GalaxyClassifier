@@ -6,6 +6,9 @@
 # GalaxyClassifier
 Final project of the course Laboratory of Computational Physics Mod. B. We aim at analysing the [Galaxy Zoo](https://www.zooniverse.org/projects/zookeeper/galaxy-zoo/classify) dataset and build a Machine Learning tool able to classify the objects within the [dataset](https://www.kaggle.com/competitions/galaxy-zoo-the-galaxy-challenge/data). 
 
+* [Report](https://github.com/margherita-lera/GalaxyClassifier/blob/main/LCPB_Galaxy_Morphology.pdf) about the work we done and our analysis
+* [Slideshow](https://github.com/margherita-lera/GalaxyClassifier/blob/main/GalaxyPresentation-4.pdf) for the oral presentation
+
 Internal Supervisor: prof. Tiziano Zingales
 
 Useful link:
